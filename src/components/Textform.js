@@ -41,6 +41,7 @@ export default function Textform(props) {
     const [text1, setText] = useState('');
     // text1 = "new text"; //Wrong way to change the state
     // setText("new text"); //Correct way to change the state 
+    const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
     return (
         <>
             <div className='container' style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
@@ -56,8 +57,8 @@ export default function Textform(props) {
             </div>
             <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1 className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>Your text summary</h1>
-                <p className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>{text1.split(" ").length} words and {text1.length} characters</p>
-                <p className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>{0.008 * text1.split(" ").length} Minutes read</p>
+                <p className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>{wordCount} words and {text1.length} characters</p>
+                <p className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>{0.008 * wordCount} Minutes read</p>
             </div>
         </>
     )
